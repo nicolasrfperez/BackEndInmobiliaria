@@ -1,3 +1,5 @@
+const inqulinosModel = require('../models/inquilinosModel')
+
 module.exports={
     getAll: function(req, res, next) {
         res.send('respond with a resource inqui');

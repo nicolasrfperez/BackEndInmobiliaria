@@ -10,6 +10,7 @@ var router = express.Router();
 router.get('/consultarAdmins',adminsController.getAll);
 router.get('/listarAdmins/:id',adminsController.getOne);
 router.post('/createAdmins',adminsController.create);
+router.post('/login', adminsController.validate)
 router.put('/updateAdmins/:id', adminsController.modify);
 
 

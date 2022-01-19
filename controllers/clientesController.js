@@ -1,3 +1,5 @@
+const clientesModel = require('../models/clientesModel')
+
 module.exports ={
 getAll: function(req, res, next) {
     res.send('respond with a resource');

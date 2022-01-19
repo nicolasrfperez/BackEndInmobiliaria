@@ -7,6 +7,8 @@ var propietariosController = require('../controllers/propietariosController');
 router.get('/listarPropietarios', propietariosController.getAll);
 router.get('/listarOneProp/:id', propietariosController.getOne);
 router.post('/createPropietario', propietariosController.create );
+//router.post('/login', propietariosController.validate)
+
 router.put('/actualizaPropietario/:id',propietariosController.modify);
 
 

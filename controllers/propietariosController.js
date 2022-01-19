@@ -1,3 +1,5 @@
+const propietariosModel = require('../models/propietariosModel')
+
 module.exports = {
     getAll: function(req, res, next) {
         res.json('get propietarios');
