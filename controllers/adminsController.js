@@ -8,7 +8,14 @@ module.exports={
         res.send('respond with a resource');
     },
     create: function(req, res, next) {
-        res.send('post users');
+        //res.send('post users');
+        const admins = new adminsModel({
+            email : req.body.email,
+            user: req.body.user,
+            password: req.body.password
+        })
+        admins.save();
+        res.json(admins);
     },
     validate: async (req, res, next) => {
         try{
