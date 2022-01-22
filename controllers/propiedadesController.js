@@ -24,11 +24,14 @@ module.exports = {
         res.json(propiedad)
 },
 
-    modify:  function(req, res, next) {
+    modify: async  function(req, res, next) {
+
+        const propiedad = await propiedadesModel.update({_id : req.params.id},req.body, {multi:false})
         console.log(`este es el id de put ${req.params.id}`)
-        res.send('put propi');
+        res.json(propiedad);
     },
-    delete:  function(req, res, next) {
+    delete: async  function(req, res, next) {
+        const data = await propiedadesModel.deleteOne({_id : req.params.id})
         console.log(`este es el id de put ${req.params.id}`)
         res.send('put propi');
     }
