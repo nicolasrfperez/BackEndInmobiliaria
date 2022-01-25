@@ -18,7 +18,9 @@ module.exports = {
             direccion : req.body.direccion,
             metrosCuad: req.body.metrosCuad,
             cantAmbientes: req.body.ambientes,
-            precio:req.body.precio
+            precio:req.body.precio,
+            precAlq:req.body.precAlq,
+           // estado:req.body.estado
         })
         propiedad.save();
         res.json(propiedad)

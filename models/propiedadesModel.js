@@ -6,7 +6,11 @@ const propiedadesSchema = new mongoose.Schema ({
     direccion : String,
     metrosCuad: Number,
     cantAmbientes: Number,
-    precio:Number
+    precio:Number,
+    precAlq:Number,
+    // estado:{
+    //     enum[libre, alquilada, vendida]
+    // }
 })
 
 module.exports = mongoose.model("propiedades", propiedadesSchema)
