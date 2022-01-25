@@ -32,7 +32,7 @@ module.exports = {
     },
     delete: async  function(req, res, next) {
         const data = await propiedadesModel.deleteOne({_id : req.params.id})
-        console.log(`este es el id de put ${req.params.id}`)
-        res.send('put propi');
+        console.log(`este es el id de delete ${req.params.id}`)
+        res.send('delete propi');
     }
 }
