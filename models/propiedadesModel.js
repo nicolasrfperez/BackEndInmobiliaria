@@ -8,9 +8,18 @@ const propiedadesSchema = new mongoose.Schema ({
     cantAmbientes: Number,
     precio:Number,
     precAlq:Number,
-    // estado:{
-    //     enum[libre, alquilada, vendida]
+    //  estado:{
+    //      enum :['libre', 'alquilada', 'vendida']
     // }
 })
-
+const imgSchema = new mongoose.Schema({
+    fieldname: "String",
+    originalname: "String",
+    encoding: "String",
+    mimetype: "String",
+    destination: "String",
+    filename: "String",
+    path: "String",
+    size: "String"
+})
 module.exports = mongoose.model("propiedades", propiedadesSchema)

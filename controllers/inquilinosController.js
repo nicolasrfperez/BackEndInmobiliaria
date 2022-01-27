@@ -10,12 +10,18 @@ module.exports={
     create: async function (req, res, next) {
         console.log(req.body);
         const inquilino = await new inqulinosModel({
-            inquilino:req.body.inquilino,
-            direccion :req.body.direccion,
-            duenio : req.body.duenio,
-            precioAlq: req.body.precioAlq,
-            estadoAlq: req.body.estadoAlq,
-            estadoPagAlq:req.body.estadoPagAlq
+            idInquilino:req.body.idInquilino,
+            nombre : req.body.nombre,
+            apellido : req.body.apellido,
+            tipoDoc : req.body.tipoDoc,
+            numeroDoc : req.body.numeroDoc,
+            email : req.body.email,
+            email2 : req.body.email2,
+            telefono : req.body.telefono,
+            telefono2 : req.body.telefono2,
+            tipoGarantia : req.body.tipoGarantia,
+            garante : req.body.garante,
+            //DNIFoto: File
         })
         inquilino.save();
         res.json(inquilino)
