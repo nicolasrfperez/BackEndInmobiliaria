@@ -1,3 +1,4 @@
+const inquilinosModel = require('../models/inquilinosModel');
 const inqulinosModel = require('../models/inquilinosModel')
 
 module.exports={
@@ -37,11 +38,31 @@ module.exports={
         inquilino.save();
         res.json(inquilino)
 },
-    modify: function(req, res, next) {
-        console.log(`este es el id de put ${req.params.id}`)
-        res.send('put inqui');
+    // modify: function(req, res, next) {
+    //     console.log(`este es el id de put ${req.params.id}`)
+    //     res.send('put inqui');
+    // },
+    // delete: function(req, res, next) {
+    //     res.send('respond with a resource inqui');
+    // }
+    modify: async function (req, res, next) {
+        try{
+            console.log(req.params.id, req.body);
+            const inquilino = await inqulinosModel.updateOne({ _id: req.params.id }, req.body, { multi: false })
+            res.status(200).json(inquilino);
+        }catch(e){
+            next(e)
+        }
+        
     },
-    delete: function(req, res, next) {
-        res.send('respond with a resource inqui');
-    }
+    delete: async function (req, res, next) {
+        try{
+            console.log(req.params.id);
+            const inquilino = await inquilinosModel.deleteOne({ _id: req.params.id });
+            res.status(200).json(inquilino);
+        }catch(e){
+            next(e)
+        }
+        
+    },
 }

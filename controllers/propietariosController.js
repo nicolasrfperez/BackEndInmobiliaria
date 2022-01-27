@@ -33,8 +33,24 @@ module.exports = {
         propietario.save();
         res.json(propietario)
 },
-    modify:  function(req, res, next) {
-        console.log(`este es el id de put ${req.params.id}`)
-        res.send('put propi');
+modify: async function (req, res, next) {
+    try{
+        console.log(req.params.id, req.body);
+        const propietario = await propietariosModel.updateOne({ _id: req.params.id }, req.body, { multi: false })
+        res.status(200).json(propietario);
+    }catch(e){
+        next(e)
     }
+    
+},
+delete: async function (req, res, next) {
+    try{
+        console.log(req.params.id);
+        const propietario = await propietariosModel.deleteOne({ _id: req.params.id });
+        res.status(200).json(propietario);
+    }catch(e){
+        next(e)
+    }
+},
+    
 }

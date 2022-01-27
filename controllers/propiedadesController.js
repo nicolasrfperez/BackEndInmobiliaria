@@ -140,5 +140,24 @@ module.exports = {
             next(e)
         }
         
-    }
+    },
+    modify: async function (req, res, next) {
+        try{
+            console.log(req.params.id, req.body);
+            const propiedades = await propiedadesModel.updateOne({ _id: req.params.id }, req.body, { multi: false })
+            res.status(200).json(propiedades);
+        }catch(e){
+            next(e)
+        }
+        
+    },
+    delete: async function (req, res, next) {
+        try{
+            console.log(req.params.id);
+            const propiedades = await propiedadesModel.deleteOne({ _id: req.params.id });
+            res.status(200).json(propiedades);
+        }catch(e){
+            next(e)
+        }
+    },
 }
