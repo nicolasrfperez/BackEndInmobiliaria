@@ -58,7 +58,6 @@ module.exports = {
                 
                 //sort:{[req.query.sort]:req.query.sortOrder},
                 sort:{name:1},
-                populate:"category",
                 limit:req.query.limit || 3, //Resultados por pagina
                 page:req.query.page || 1 //numero de pagina
             });
@@ -76,7 +75,7 @@ module.exports = {
                 res.status(200).json({msg:"no existe el propiedade"})
                 return; //Siempre despues de un res un return
             }
-            res.status(200).json(producto);
+            res.status(200).json(propiedades);
         }catch(e){
             next(e)
         }
