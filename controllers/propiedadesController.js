@@ -71,8 +71,8 @@ module.exports = {
     getById: async function (req, res, next) {
         try{
             console.log(req.params.id);
-            const propiedade = await propiedadesModel.findById(req.params.id).select("name price");
-            if(!propiedade){
+            const propiedades = await propiedadesModel.findById(req.params.id).select("name price");
+            if(!propiedades){
                 res.status(200).json({msg:"no existe el propiedade"})
                 return; //Siempre despues de un res un return
             }

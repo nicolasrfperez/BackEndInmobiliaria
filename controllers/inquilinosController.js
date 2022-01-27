@@ -1,12 +1,23 @@
 const inqulinosModel = require('../models/inquilinosModel')
 
 module.exports={
-    getAll: function(req, res, next) {
-        res.send('respond with a resource inqui');
+
+        getAll: async function(req, res, next) {
+        res.json('get propiedades');
+        const propiedad = await  inquilinosModel.find({
+            
+        })
     },
-    getOne:function(req, res, next) {
-        res.send('respond with a resource inqui');
+    getOne: async  function(req, res, next){
+        const inquilino = await inqulinosModel.findById(req.params.id);
+        res.json(inquilino);
     },
+    // getAll: function(req, res, next) {
+    //     res.send('respond with a resource inqui');
+    // },
+    // getOne:function(req, res, next) {
+    //     res.send('respond with a resource inqui');
+    // },
     create: async function (req, res, next) {
         console.log(req.body);
         const inquilino = await new inqulinosModel({
