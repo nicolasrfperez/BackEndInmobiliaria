@@ -7,7 +7,7 @@ module.exports={
     getOne: function(req, res, next) {
         res.send('respond with a resource');
     },
-    validate: async (req, res, next) => {
+    login: async (req, res, next) => {
         try{
             console.log(req.query)
             const {error,message,admins} = await adminsModel.validateUser(req.body.user,req.body.password);
