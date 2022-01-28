@@ -1,11 +1,16 @@
 const adminsModel = require('../models/adminsModel')
 
 module.exports={
-    getAll:  function(req, res, next) {
-        res.send('respond with a resource');
+    getAll: async function(req, res, next) {
+      
+        const admins = await  adminsModel.find({
+            
+        })
+        res.json(admins);
     },
-    getOne: function(req, res, next) {
-        res.send('respond with a resource');
+    getOne: async  function(req, res, next){
+        const admins = await adminsModel.findById(req.params.id);
+        res.json(admins);
     },
     login: async (req, res, next) => {
         try{

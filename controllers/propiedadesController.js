@@ -45,42 +45,41 @@ const DIR = './public/images/';
 
 const upload = multer({dest: DIR}).single('photo');
 module.exports = {
-    getAll: async (req, res, next) => {
-        try{
-            console.log(req.body.tokenData)
+    getAll: async function(req, res, next) {
+        
+        const propiedades = await  propiedadesModel.find({
+            
+        })
+        res.json(propiedades);
+    },
+    // getAll: async (req, res, next) => {
+    //     try{
+    //         console.log(req.body.tokenData)
 
-            let queryFind={};
-            if(req.query.buscar){
-                queryFind={name:{$regex:".*"+req.query.buscar+".*",$options:"i"}} //buscar por nombre similar al like
-            }
-            console.log(queryFind)
-            const propiedades = await propiedadesModel.paginate(queryFind,{
+    //         let queryFind={};
+    //         // if(req.query.buscar){
+    //         //      queryFind={name:{$regex:".*"+req.query.buscar+".*",$options:"i"}} //buscar por nombre similar al like
+    //         // }
+    //         console.log(queryFind)
+    //         const propiedades = await propiedadesModel(queryFind,{
                 
-                //sort:{[req.query.sort]:req.query.sortOrder},
-                sort:{name:1},
-                limit:req.query.limit || 3, //Resultados por pagina
-                page:req.query.page || 1 //numero de pagina
-            });
-            res.status(200).json(propiedades);
-        }catch(e){
-            next(e)
-        }
+    //             //sort:{[req.query.sort]:req.query.sortOrder},
+    //             sort:{name:1},
+    //             limit:req.query.limit || 3, //Resultados por pagina
+    //             page:req.query.page || 1 //numero de pagina
+    //         });
+    //         res.status(200).json(propiedades);
+    //     }catch(e){
+    //         next(e)
+    //     }
         
+    // },
+    getOne: async  function(req, res, next){
+        const propiedades = await propiedadesModel.findById(req.params.id);
+        res.json(propiedades);
     },
-    getById: async function (req, res, next) {
-        try{
-            console.log(req.params.id);
-            const propiedades = await propiedadesModel.findById(req.params.id).select("name price");
-            if(!propiedades){
-                res.status(200).json({msg:"no existe el propiedade"})
-                return; //Siempre despues de un res un return
-            }
-            res.status(200).json(propiedades);
-        }catch(e){
-            next(e)
-        }
         
-    },
+    
     create: async function (req, res, next) {
         console.log(req.body);
         try{
@@ -116,16 +115,16 @@ module.exports = {
         }
         
     },
-    delete: async function (req, res, next) {
-        try{
-            console.log(req.params.id);
-            const data = await propiedadesModel.deleteOne({ _id: req.params.id });
-            res.status(200).json(data);
-        }catch(e){
-            next(e)
-        }
+    // delete: async function (req, res, next) {
+    //     try{
+    //         console.log(req.params.id);
+    //         const data = await propiedadesModel.deleteOne({ _id: req.params.id });
+    //         res.status(200).json(data);
+    //     }catch(e){
+    //         next(e)
+    //     }
         
-    },
+    // },
     upload: async function (req, res, next) {
         try{
             upload(req,res,function(err){

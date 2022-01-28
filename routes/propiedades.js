@@ -6,7 +6,7 @@ var express = require('../controllers/propiedadesController');
 
 /* GET users listing. */
 router.get('/listarPropiedades',propiedadesController.getAll);
-router.get('/listarOnePropiedad/:id', propiedadesController.getById );
+router.get('/listarOnePropiedad/:id', propiedadesController.getOne);
 
 router.post('/createPropiedad', propiedadesController.create);
  // res.send('post users');

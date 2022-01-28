@@ -2,10 +2,11 @@ const propietariosModel = require('../models/propietariosModel')
 
 module.exports = {
         getAll: async function(req, res, next) {
-        res.json('get propietarios');
+        
         const propietarios = await  propietariosModel.find({
             
         })
+        res.json(propietarios);
         },
         getOne: async  function(req, res, next){
             const propietarios = await propietariosModel.findById(req.params.id);

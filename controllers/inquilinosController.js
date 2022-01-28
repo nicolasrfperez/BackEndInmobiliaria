@@ -4,10 +4,11 @@ const inqulinosModel = require('../models/inquilinosModel')
 module.exports={
 
         getAll: async function(req, res, next) {
-        res.json('get propiedades');
-        const propiedad = await  inquilinosModel.find({
+      
+        const inquilinos = await  inquilinosModel.find({
             
         })
+        res.json(inquilinos);
     },
     getOne: async  function(req, res, next){
         const inquilino = await inqulinosModel.findById(req.params.id);
