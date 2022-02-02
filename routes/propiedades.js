@@ -10,6 +10,9 @@ router.get('/listarOnePropiedad/:id', propiedadesController.getOne);
 
 router.post('/createPropiedad', propiedadesController.create);
  // res.send('post users');
+//
+// NO SE COMO SE SUBE LA IMAGEN
+//
 router.put('/actualizarPropiedad/:id', propiedadesController.update );
 router.delete('/borrarPropiedad/:id', propiedadesController.delete);
 

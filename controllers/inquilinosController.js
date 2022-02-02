@@ -1,5 +1,5 @@
 const inquilinosModel = require('../models/inquilinosModel');
-const inqulinosModel = require('../models/inquilinosModel')
+//const inqulinosModel = require('../models/inquilinosModel')
 
 module.exports={
 
